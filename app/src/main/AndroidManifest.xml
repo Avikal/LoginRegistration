@@ -21,6 +21,9 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegistrationActivity"/>
         <activity android:name=".ShowActivity"/>
+        <activity android:name=".FullView"/>
+        <activity android:name=".model.UpdateClass"/>
+
     </application>
 
 </manifest>

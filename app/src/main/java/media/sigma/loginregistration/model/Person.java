@@ -3,14 +3,16 @@ package media.sigma.loginregistration.model;
 public class Person 
 {
 	String userName,phoneNo,email, /*newEmail ,*/pass,proffesion,address,desscrpation;
-
+	int user_id;
+	public byte [] user_image;
 	public Person()
 	{
 
 	}
-	public Person(String userName, String phoneNo, String email, String pass, String proffesion, String address, String descrpation)
+	public Person(int user_id,String userName, String phoneNo, String email, String pass, String proffesion, String address, String descrpation,byte[] user_image)
 	{
 		super();
+		this.user_id = user_id;
 		this.userName = userName;
 		this.phoneNo = phoneNo;
 		this.email = email;
@@ -19,10 +21,18 @@ public class Person
 		this.proffesion = proffesion;
 		this.address = address;
 		this.desscrpation = descrpation;
+		this.user_image = user_image;
 	}
 
 
-	
+	public int getId()
+	{
+		return user_id;
+	}
+	public void setId(int user_id)
+	{
+		this.user_id = user_id;
+	}
 	public String getUsername() {
 		return userName;
 	}
@@ -83,5 +93,14 @@ public class Person
 	public void setDesscrpation(String desscrpation)
 	{
 		this.desscrpation = desscrpation;
+	}
+
+	public byte[] getImage()
+	{
+		return user_image;
+	}
+	public void setImage(byte[] user_image)
+	{
+		this.user_image = user_image;
 	}
 }

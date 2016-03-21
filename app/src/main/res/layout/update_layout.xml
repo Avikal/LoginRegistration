@@ -18,20 +18,20 @@
             android:layout_marginTop="30dp"
             android:orientation="vertical" >
 
+            <!--   <ImageView
+                  android:id="@+id/user_pic"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_horizontal"
+                  android:background="@drawable/profile_login" />
+   -->
             <ImageView
-                android:id="@+id/user_pic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/ic_launcher" />
-
-            <ImageView
-                android:id="@+id/user_picture"
+                android:id="@+id/cust_picture"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="-50dp"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/login_subtitile"
@@ -43,7 +43,7 @@
                 android:textColor="#4799E8" />
 
             <EditText
-                android:id="@+id/editTextRegistername"
+                android:id="@+id/editTextfullname"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -55,119 +55,135 @@
                 android:hint="Full Name"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:inputType="textCapSentences"
+                />
 
             <EditText
-                android:id="@+id/editTextRegisterEmail"
+                android:id="@+id/editTextemail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edittextstyle"
                 android:editable="true"
                 android:ems="10"
-                android:hint="Email Address"
+                android:hint="Email"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:inputType="textCapSentences"/>
 
             <EditText
-                android:id="@+id/editTextRegisterPass"
+                android:id="@+id/editTextPass"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edittextstyle"
                 android:editable="true"
                 android:ems="10"
                 android:hint="Password"
+
                 android:padding="10dp"
                 android:singleLine="true"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:inputType="textPassword" />
 
             <EditText
-                android:id="@+id/editTextRegisterPhone"
+                android:id="@+id/editTextPhone"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edittextstyle"
                 android:editable="true"
                 android:ems="10"
                 android:hint="Phone"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:inputType="number" />
 
             <EditText
-                android:id="@+id/editTextRegisterProfession"
+                android:id="@+id/editTextProfesion"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edittextstyle"
                 android:editable="true"
                 android:ems="10"
-                android:hint="Profession"
+                android:hint="Proffesion"
+
                 android:padding="10dp"
                 android:singleLine="true"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:inputType="textCapSentences"/>
 
             <EditText
-                android:id="@+id/editTextRegisterAddress"
+                android:id="@+id/editTextAddress"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edittextstyle"
                 android:editable="true"
                 android:ems="10"
                 android:hint="Address"
+                android:inputType="textCapSentences"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textColor="#000000" />
 
             <EditText
-                android:id="@+id/editTextRegisterDescribe"
+                android:id="@+id/editTextdescription"
                 android:layout_width="fill_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edittextstyle"
                 android:editable="true"
                 android:ems="10"
-                android:hint="Describe Yourself"
+                android:hint="Descripation"
                 android:padding="10dp"
-                android:textColor="#000000" />
+                android:singleLine="true"
+                android:textColor="#000000"
+                android:inputType="textCapSentences"/>
 
-            <Button
-                android:id="@+id/user_Submit"
+
+
+            <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/buttonstyle"
-                android:text="Submit"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-            <TextView
-                android:id="@+id/forgat_password1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:textColor="#4799E8" />
+                <Button
+                    android:id="@+id/update_cust"
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonstyle"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

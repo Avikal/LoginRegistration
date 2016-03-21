@@ -28,6 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	private static final String KEY_PROFFESION = "profession";
 	private static final String KEY_ADDRESS = "address";
 	private static final String KEY_DESCRIPTION = "descrption";
+	private static final String KEY_IMAGE = "image";
 
 	// private static final String KEY_NAME = "name";
 	// private static final String KEY_PHONE = "phone";
@@ -61,7 +62,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 				+ KEY_PHONE	+ " TEXT,"
 				+ KEY_PROFFESION + " TEXT," 
 				+ KEY_ADDRESS + " TEXT,"
-				+ KEY_DESCRIPTION + " TEXT" + ")";
+				+ KEY_DESCRIPTION + " TEXT," +  KEY_IMAGE + " BLOB"+ ")";
 		// String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
 		// + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
 		// + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
@@ -76,12 +77,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXIST " + TABLE_LOGIN);
 		onCreate(db);
 	}
-
+	public void deleteCustRow(int id) {
+		SQLiteDatabase database = this.getWritableDatabase();
+		String deleteQuery = TABLE_LOGIN + " WHERE ID = " + id;
+		database.delete(deleteQuery, null, null);
+		database.close();
+	}
 	/**
 	 * Storing user details in database
 	 * */
 	public long addUser(String name, String email, String password,
-			String phone, String profession, String address, String description) {
+			String phone, String profession, String address, String description,byte[] imageByte) {
 		// SQLiteDatabase db = this.getWritableDatabase();
 		long d = 0;
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -97,6 +103,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 			values.put(KEY_PROFFESION, profession);
 			values.put(KEY_ADDRESS, address);
 			values.put(KEY_DESCRIPTION, description);
+			values.put(KEY_IMAGE, imageByte);
 
 			// Inserting Row
 			d = db.insert(TABLE_LOGIN, null, values);
@@ -140,7 +147,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		values.put(KEY_EMAIL, this.newEmail);
 		// values.put(KEY_PASS, person.getPass());
 		String name = person.getUsername();
-		Toast.makeText(context, name, 10).show();
+		Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
 
 		d = db.update(TABLE_LOGIN, values, KEY_EMAIL + " = ?",
 				new String[] { String.valueOf(person.getEmail()) });
@@ -228,6 +235,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		db.close();
 	}
 
+	public long updateuser(int user_id, String Fullname, String Email,
+							   String Pass, String Phone, String Profesion, String Address,
+							   String Desc,byte[] imageByte) {
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+
+
+		values.put(KEY_NAME, Fullname); // Name
+		values.put(KEY_EMAIL, Email);
+		values.put(KEY_PASS, Pass); // EmailL
+		values.put(KEY_PHONE, Phone); // Password
+		values.put(KEY_PROFFESION, Profesion);
+
+		values.put(KEY_ADDRESS, Address);
+		values.put(KEY_DESCRIPTION, Desc);
+		values.put(KEY_IMAGE, imageByte);
+
+		long d = db.update(TABLE_LOGIN, values, KEY_ID + " = ?",
+				new String[] { String.valueOf(user_id) });
+
+		db.close();
+
+		return d;
+
+	}
 	/**
 	 * Getting user data from database
 	 * */
@@ -265,7 +298,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		{
 			do {
 				Person user = new Person();
-
+				user.setId(cursor.getInt(0));
 				user.setUsername(cursor.getString(1));
 				user.setEmail(cursor.getString(2));
 				user.setPass(cursor.getString(3));
@@ -273,6 +306,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 				user.setProffesion(cursor.getString(5));
 				user.setAddress(cursor.getString(6));
 				user.setDesscrpation(cursor.getString(7));
+				user.setImage(cursor.getBlob(8));
 
 				user_data.add(user);
 			}while (cursor.moveToNext());

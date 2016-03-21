@@ -26,7 +26,10 @@ public class ShowActivity extends AppCompatActivity
     DataBaseHelper dataBase;
     Button btn_logout;
     CustomerListAdapter adapter;
+    String full_name,email,pass,phone,profession,address,describe;
+    int user_id;
     ArrayList<Person> cust_list = new ArrayList<Person>();
+    byte[] image2;
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -52,7 +55,28 @@ public class ShowActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Person picture = cust_list.get(position);
-              
+                full_name = picture.getUsername();
+                email = picture.getEmail();
+                pass = picture.getPass();
+                phone = picture.getPhoneNo();
+                profession = picture.getProffesion();
+                address = picture.getAddress();
+                describe = picture.getDesscrpation();
+                user_id = picture.getId();
+                image2 = picture.getImage();
+                Intent full = new Intent(ShowActivity.this,FullView.class);
+                full.putExtra("user_id",user_id);
+                full.putExtra("full_name", full_name);
+                full.putExtra("email", email);
+                full.putExtra("password",pass);
+                full.putExtra("phone",phone);
+                full.putExtra("profession",profession);
+                full.putExtra("address",address);
+                full.putExtra("describe",describe);
+                full.putExtra("custImage", image2);
+                startActivity(full);
+                finish();
+
             }
         });
 /*        session = new SessionManager(getApplicationContext());

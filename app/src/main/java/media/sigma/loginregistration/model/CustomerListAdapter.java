@@ -25,6 +25,7 @@ public class CustomerListAdapter extends BaseAdapter {
 	LayoutInflater inflater;
 	ArrayList<HashMap<String, String>> data;
 	int cust_id;
+
 //	String cust_fullname,cust_fathername,cust_date,cust_address,cust_village,cust_mobile,
 //	cust_amount,cust_itemType,cust_weight,cust_desription;
 
@@ -75,11 +76,11 @@ public class CustomerListAdapter extends BaseAdapter {
 		customer_name.setText(customer_data.get(position).getUsername());
 
 		Person person = customer_data.get(position);
-//		image2 = picture.cust_image;
+		image2 = person.user_image;
 		
-//		ByteArrayInputStream imageStream = new ByteArrayInputStream(image2);
-//		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-//		customer_image.setImageBitmap(theImage);
+		ByteArrayInputStream imageStream = new ByteArrayInputStream(image2);
+		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+		customer_image.setImageBitmap(theImage);
 		
 //		cust_id = picture.getId();
 		/*cust_fullname = picture.getFullName();
